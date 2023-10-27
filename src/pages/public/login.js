@@ -7,8 +7,8 @@ const windowHeight = Dimensions.get("window").height;
 const Login = ({navigation}) => {
   const [isShow, setisShow] = useState(false);
 
-  const handleLogin = () => {
-    navigation.navigate('homeDrawer')
+  const handleLogin = ({navigation}) => {
+    navigation.navigate('HomeDrawer')
   }
   
   return (
