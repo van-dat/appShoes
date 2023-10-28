@@ -18,12 +18,8 @@ const HomeDrawer = () => {
   );
 };
 
-export default function APP() {
-  const dispatch = useDispatch()
-  useEffect(() => {
-      dispatch(getProductSale()),
-      dispatch(getBanner())
-  }, []);
+export default function App() {
+  
   return (
     <NavigationContainer>
       <Stack.Navigator initialRouteName="HomeDrawer" screenOptions={{ headerShown: false }}>

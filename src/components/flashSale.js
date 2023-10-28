@@ -8,23 +8,23 @@ import { useSelector } from "react-redux";
 
 const FlashSale = ({ widthScreen }) => {
    
-    const {dataBanner, dataProductSale} = useSelector((state) => state.app);
-    console.log(dataProductSale)
-    // const [dataBanner, setDataBanner] = useState();
+    // const {dataBanner, dataProductSale} = useSelector((state) => state.app);
+    // console.log(dataProductSale)
+    const [dataBanner, setDataBanner] = useState();
 
-    // const FetchData = async () => {
-    //     try {
-    //         const response = await apis.apiProductSale();
-    //         console.log(response.product[0].image[0])
-    //         setDataBanner(response.product)
-    //     } catch (error) {
-    //         console.error('Lỗi khi gửi yêu cầu:', error);
-    //     }
-    // }
-    // useEffect(() => {
-    //     FetchData();
-    // }, []);
-    // console.log(dataBanner)
+    const FetchData = async () => {
+        try {
+            const response = await apis.apiProductSale();
+            console.log(response.product[0].image[0])
+            setDataBanner(response.product)
+        } catch (error) {
+            console.error('Lỗi khi gửi yêu cầu:', error);
+        }
+    }
+    useEffect(() => {
+        FetchData();
+    }, []);
+    console.log(dataBanner)
     return (
         <View style={{ width: widthScreen, backgroundColor: 'white', alignItems: 'center' }}>
             <View style={{ width: widthScreen }} >
@@ -41,9 +41,8 @@ const FlashSale = ({ widthScreen }) => {
                             return (
                                 <View style={{ width: widthScreen * 0.35, height: 200 }} >
                                     <View >
-                                        <Image source={{ uri: item.image[0] }} style={{ width: "100%", height: "100%", objectFit: 'scale-down' }} />
+                                        <Image source={{ uri: item.image[0] }} style={{ width: widthScreen *1/3, height:150, resizeMode:'cover' }} />
                                     </View>
-                                    <Text>{item.price}</Text>
                                 </View>
                             )
                         }} />
